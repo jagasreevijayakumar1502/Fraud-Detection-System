@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a2236 0%, #232946 100%);
+            min-height: 100vh;
+            color: #eaf6ff;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+        .brand-logo {
+            font-size: 2.2rem;
+            color: #16f2b3;
+            margin-right: 12px;
+        }
+        .brand-title {
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: #16f2b3;
+            letter-spacing: 1px;
+        }
+        .login-container {
+            max-width: 420px;
+            margin: 80px auto;
+            background: #232946;
+            padding: 38px 44px;
+            border-radius: 16px;
+            box-shadow: 0 6px 32px rgba(22,242,179,0.08);
+            border: 1px solid #2e3a59;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #16f2b3;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #eaf6ff;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #2e3a59;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #1a2236;
+            color: #eaf6ff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .form-group input:focus {
+            border-color: #16f2b3;
+            background: #232946;
+            outline: none;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #16f2b3 0%, #3be8ff 100%);
+            color: #232946;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(22,242,179,0.08);
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #3be8ff 0%, #16f2b3 100%);
+            color: #1a2236;
+        }
+        .error {
+            color: #ff6b6b;
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="brand">
+            <span class="brand-logo"><i class="fa-solid fa-shield-halved"></i></span>
+            <span class="brand-title">Fraud Detection System</span>
+        </div>
+        <h2>Login</h2>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method="post">
+            <div class="form-group">
+                <label for="usertype">Login as</label>
+                <select id="usertype" name="usertype" required>
+                    <option value="citizen">Citizen</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="username">Citizen ID / Admin Username</label>
+                <input type="text" id="username" name="username" autocomplete="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" autocomplete="current-password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <div style="text-align:center; margin-top:18px;">
+            <a href="{{ url_for('register') }}" style="color:#16f2b3; text-decoration:underline;">Not registered? Register here</a>
+        </div>
+    </div>
+</body>
+</html>

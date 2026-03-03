@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a2236 0%, #232946 100%);
+            min-height: 100vh;
+            color: #eaf6ff;
+        }
+        .register-container {
+            max-width: 480px;
+            margin: 80px auto;
+            background: #232946;
+            padding: 38px 44px;
+            border-radius: 16px;
+            box-shadow: 0 6px 32px rgba(22,242,179,0.08);
+            border: 1px solid #2e3a59;
+        }
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 24px;
+            color: #16f2b3;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #eaf6ff;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #2e3a59;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #1a2236;
+            color: #eaf6ff;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #16f2b3;
+            background: #232946;
+            outline: none;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #16f2b3 0%, #3be8ff 100%);
+            color: #232946;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(22,242,179,0.08);
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #3be8ff 0%, #16f2b3 100%);
+            color: #1a2236;
+        }
+        .error {
+            color: #ff6b6b;
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .success {
+            color: #16f2b3;
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Citizen Registration</h2>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+        <div class="success">{{ success }}</div>
+        {% endif %}
+        <form method="post">
+            <div class="form-group">
+                <label for="citizen_id">Citizen ID (Aadhaar)</label>
+                <input type="text" id="citizen_id" name="citizen_id" required maxlength="12">
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="account_status">Account Status</label>
+                <select id="account_status" name="account_status" required>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="aadhaar_linked">Aadhaar Linked</label>
+                <select id="aadhaar_linked" name="aadhaar_linked" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>
